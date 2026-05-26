@@ -20,33 +20,42 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
 
 /*___________ Contenedor Principal del Header______________ */
 .cabezera-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
+    width: 100%;
     background-color: #ffffff;
     border-bottom: 1px solid #f0f0f0;
 }
+.header-container {
+    max-width: 1200px; /* Limita el ancho para que no se desarme al 30% */
+    margin: 0 auto;    /* Centra el bloque en la pantalla */
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+}
 
-/* Lado Izquierdo: Logo + Menú */
+
+/* Lado Izquierdo: Hamburguesa + Logo + Menú */
 .header-left {
     display: flex;
     align-items: center;
-    gap: 5px; /* Separación entre el logo y los links */
+    gap: 20px; /* Espaciado uniforme entre elementos del lado izquierdo */
+}
+
+/* Ocultar menú hamburguesa por defecto en pantallas grandes */
+.menu-toggle {
+    display: none; 
 }
 
 .logo img {
-    height: 35px; /* Ajusta según el tamaño de tu imagen */
+    height: 35px; 
     display: block;
 }
 
 /* Menú de Navegación */
 .nav-menu {
     display: flex;
-    gap: 30px; /* Separación entre cada enlace */
-    
+    gap: 30px; 
 }
-
 
 .nav-link {
     padding: 8px 10px;
@@ -54,21 +63,23 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
     cursor: pointer;
     transition: color 0.50s ease;
     text-decoration: none;
-    color:var(--color-principal) ;
+    color: var(--color-principal);
     font-weight: 600;
     font-size: 15px;
 }
 
-.nav-link:hover  {
+.nav-link:hover {
     background-color: var(--color-tercero);
-    color: var(--color-secundario); /* Color de énfasis al pasar el cursor */
+    color: var(--color-secundario); 
     border: 1px solid #cccccc;
 }
 
 /* Lado Derecho: Botones de Acción */
 .header-actions {
-    display: flex;
-    gap: 15px; /* Separación entre los dos botones */
+    display: flex; /* IMPORTANTE: Activa flex para que los botones no se rompan */
+    align-items: center;
+    gap: 15px; 
+    flex-shrink: 0; /* Evita que los botones se achiquen o deformen */
 }
 
 /* Estilos de los botones */
@@ -79,6 +90,7 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
     border-radius: 25px; 
     cursor: pointer;
     transition: all 0.2s ease;
+    white-space: nowrap; /* Evita que el texto del botón se divida en dos líneas */
 }
 
 /* Botón "Espacio Nave"*/
@@ -104,7 +116,6 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
     background-color: var(--color-tercero); 
     color: var(--color-secundario);
 }
-
 
 /*________________aca empieza section _________________________________________________*/
 h1 {
@@ -460,13 +471,36 @@ transform: translateY(-10px); /* Mueve la tarjeta 10 píxeles hacia arriba */
 hr {
     margin: 50px;
 }
+
 /*_____________________________________medias__________________________________________________ */
 
+/* 1. ESTILOS BASE PARA EL MENÚ HAMBURGUESA (Fuera de las queries) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
 
-/*Pantallas hasta 1024px)*/
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+/* 2. PANTALLAS MEDIANAS / TABLETS (Hasta 820px) */
 @media (max-width: 820px) {
-    /* Header: Reducción de espacios para evitar solapamientos */
-    .cabezera-header {
+    /* Ajustes generales del Header */
+    .header-container {
         padding: 15px 20px;
     }
     .nav-menu {
@@ -481,20 +515,22 @@ hr {
         font-size: 13px;
     }
 
-    /* Título principal y Beneficios */
+    /* Estructura de los 3 bloques principales */
+    .contenedor-flex {
+        flex-direction: column; /* Cambia a columna en tablets también para que no se apriete */
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    .bloque {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Título principal */
     h1 {
         font-size: 2rem;
         margin-bottom: 40px;
-    }
-    .bloque {
-        padding: 15px;
-        gap: 12px;
-    }
-    .bloque h2 {
-        font-size: 18px;
-    }
-    .bloque p {
-        font-size: 15px;
     }
 
     /* Banner de Historias */
@@ -518,10 +554,10 @@ hr {
         gap: 20px;
     }
     .imagen-qr, .imagen-point {
-        max-width: 350px; /* Evita que las imágenes empujen demasiado al texto */
+        max-width: 350px;
     }
 
-    /* Footer: Se activa la flexibilidad por si falta espacio horizontal */
+    /* Footer */
     .cont_general {
         flex-wrap: wrap;
         gap: 25px;
@@ -532,21 +568,22 @@ hr {
     }
 }
 
-/* (Pantallas hasta 768px)*/
-@media (max-width: 480px) {
-    /* Header Mobile: Se ordena en fila vertical */
-    .cabezera-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 15px;
+
+/* 3. PANTALLAS CHICAS / CELULARES (Hasta 768px) */
+@media (max-width: 768px) {
+    /* Header Móvil Ordenado: Muestra hamburguesa y oculta links de texto */
+    .menu-toggle {
+        display: flex; /* Activa la hamburguesa */
     }
     .nav-menu {
-        display: none; /* Oculta el menú horizontal estático en celulares */
+        display: none !important; /* Oculta los links de texto */
     }
     .header-actions {
-        width: 100%;
-        justify-content: center;
+        display: none !important; /* Oculta los botones derecho para que no rompan el espacio */
+    }
+    .header-container {
+        padding: 15px 20px;
+        justify-content: space-between; /* Mantiene logo a un lado y hamburguesa al otro */
     }
 
     /* Títulos de secciones */
@@ -563,19 +600,7 @@ hr {
         padding: 0 15px;
     }
 
-    /* Contenedor de 3 bloques a columna única */
-    .contenedor-flex {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 20px;
-        gap: 20px;
-    }
-    .bloque {
-        width: 100%;
-        padding: 20px;
-    }
-
-    /* Banner Historias en vertical */
+    /* Historias */
     .caja-historias {
         width: 90%;
         height: auto;
@@ -591,9 +616,9 @@ hr {
         font-size: 15px;
     }
 
-    /* Secciones QR y Point: Las columnas se apilan verticalmente */
+    /* Secciones QR y Point: Apiladas verticalmente y centradas */
     .contenedor-qr, .contenedor-point {
-        flex-direction: column; 
+        flex-direction: column !important; /* Fuerza a que vayan hacia abajo */
         text-align: center;
         gap: 25px;
     }
@@ -604,17 +629,17 @@ hr {
         margin-bottom: 20px;
     }
     .enlace-mas, .enlace-point {
-        justify-content: center; /* Centra el enlace de "Conocer más" */
+        justify-content: center;
     }
     .contenedor-imagen-qr, .contenedor-imagen-point {
         justify-content: center;
         width: 100%;
     }
     .imagen-qr, .imagen-point {
-        max-width: 280px; /* Tamaño adaptado a pantallas de celulares */
+        max-width: 280px;
     }
 
-    /* Footer Mobile: Columnas distribuidas de a dos por fila */
+    /* Footer Mobile: Dos columnas ordenadas por fila */
     footer {
         padding: 30px 20px;
         text-align: center;
@@ -625,46 +650,14 @@ hr {
     .cont_general {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 30px 10px; /* 30px de separación arriba/abajo, 10px a los lados */
+        gap: 30px 10px;
     }
     .cont {
-        width: 45%; /* Permite acomodar dos categorías por fila */
+        width: 45%;
         min-width: unset;
-        align-items: center; /* Centra textos y enlaces internamente */
+        align-items: center;
     }
     hr {
         margin: 30px 20px;
     }
-}
-
- /* Oculta el botón por completo en pantallas grandes */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-  /* Estilo de las 3 líneas horizontales */
-.menu-toggle span {
-    width: 100%;
-    height: 3px;
-    background-color: #333; /* Cambia el color aquí */
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    
-}
-
-  /* --- CELULAR (Media Query) --- */
-  /* Muestra el botón solo en pantallas chicas */
-@media (max-width: 768px) {
-.menu-toggle {
-display: flex;
-
-}
 }
