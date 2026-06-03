@@ -475,6 +475,9 @@ transform: translateY(-10px); /* Mueve la tarjeta 10 píxeles hacia arriba */
 hr {
     margin: 50px;
 }
+.logo-mobile {
+    display: none;  
+}
 
 /*_____________________________________medias__________________________________________________ */
 
@@ -572,7 +575,6 @@ hr {
     }
 }
 
-
 /* 3. PANTALLAS CHICAS / CELULARES (Hasta 768px) */
 @media (max-width: 768px) {
     /* Header Móvil Ordenado: Muestra hamburguesa y oculta links de texto */
@@ -584,7 +586,22 @@ hr {
     .logo {
         grid-column: 2; /* Centra el logo exactamente en el medio */
         justify-self: center;
+        display: none;
+        
     }
+      .logo-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* VA AQUÍ ADENTRO */
+    .logo-mobile img {
+        max-width: 100%;
+        height: auto;
+    }
+
     .nav-menu {
         display: none !important; /* Oculta los links de texto */
     }
