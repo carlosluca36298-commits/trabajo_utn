@@ -98,8 +98,8 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
 /* Botón "Espacio Nave"*/
 .btn-outline {
     background-color: transparent;
-    color: #2b4cb7;
-    border: 1px solid #cccccc;
+    color: var(--color-secundario);
+    border: 1px solid var(--color-secundario);
 }
 
 .btn-outline:hover {
@@ -118,6 +118,7 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
     background-color: var(--color-tercero); 
     color: var(--color-secundario);
 }
+
 
 /*________________aca empieza section _________________________________________________*/
 h1 {
