@@ -122,77 +122,77 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
 
 /*________________aca empieza section _________________________________________________*/
 h1 {
-font-size: 2.50rem;
-margin-bottom: 80px;
-padding: 4%;
-margin: 4%;
-color:var(--color-principal);
-text-align: center;
+    font-size: 2.50rem;
+    margin-bottom: 80px;
+    padding: 1%;
+    margin: 4%;
+    color:var(--color-principal);
+    text-align: center;
 }
 
 /* Contenedor Flexbox */
 .contenedor-flex {
-display: flex;
-justify-content: center;
-align-items: flex-start;
-max-width: 1200px;
-margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Cada una de las 3 cajas */
 .bloque {
-flex: 1; 
-display: flex;
-flex-direction: column;
-justify-content: center; /* Centra el contenido verticalmente */
-align-items: center;     /* Centra el contenido horizontalmente (icono, título y texto) */
-text-align: center;      /* Asegura que el texto se vea centrado */
-gap: 16px;
-border-radius: 16px;
-box-sizing: border-box;
-padding: 30px;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items:flex-start;     /* hacia la izquierda */
+    text-align: left;      /* Asegura que el texto se vea hacia la izquierda */
+    gap: 16px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    padding: 50px;
 }
+
 /* 1. Modifica tu clase base para preparar la animación */
 .bloque {
-    /* ... (deja todas las propiedades que ya tenías) ... */
-transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hace que el movimiento sea suave */
+  /* ... (deja todas las propiedades que ya tenías) ... */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hace que el movimiento sea suave */
 }
 
 /*efecto Hover */
 .bloque:hover {
-transform: translateY(-10px);
+    transform: translateY(-10px);
 }
-
 
 /* Estilos de los iconos */
 .icono-contenedor {
-width: 60px;
-height: 60px;
-background-color: var(--color-cuarto); 
-border-radius: 8px;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-cuarto); 
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .icono {
-width: 25px;
-height: 25px;
-color: var(--color-secundario); /* Color azul del vector */
+    width: 25px;
+    height: 25px;
+    color: var(--color-secundario); /* Color azul del vector */
 }
 
 /* Títulos de las cajas */
 .bloque h2 {
-font-size: 22px;
-margin-bottom: 15px; /*margen entre el icono , titulo y parrafo de cada cajita*/
-color: var(--color-principal);
+    font-size: 22px;
+    margin-bottom: 15px; /*margen entre el icono , titulo y parrafo de cada cajita*/
+    color: var(--color-principal);
 }
 
 /* Textos descriptivos */
 .bloque p {
-font-size: 18px;
-color: #666;
+    font-size: 18px;
+    color: #666;
 }
 
 .caja-historias {
@@ -205,6 +205,7 @@ color: #666;
     max-width: 1022;
     padding: 0;
 }
+
 
 /* --- banner superior--- */
 .caja-historias {
