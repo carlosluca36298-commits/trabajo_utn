@@ -66,13 +66,15 @@ font-family: "Inter",Arial, Helvetica, sans-serif;
     color: var(--color-principal);
     font-weight: 600;
     font-size: 15px;
+    border: 1px solid transparent; 
 }
 
 .nav-link:hover {
     background-color: var(--color-tercero);
     color: var(--color-secundario); 
-    border: 1px solid #cccccc;
+    border: 1px solid #cccccc; 
 }
+
 
 /* Lado Derecho: Botones de Acción */
 .header-actions {
