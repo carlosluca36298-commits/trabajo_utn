@@ -525,7 +525,7 @@ hr {
     /* Estructura de los 3 bloques principales */
     .contenedor-flex {
         flex-direction: column; /* Cambia a columna en tablets también para que no se apriete */
-        align-items: center;
+        align-items: flex-start;
         gap: 20px;
         padding: 0 20px;
     }
